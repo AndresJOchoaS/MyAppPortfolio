@@ -13,10 +13,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initializeButtons();
     }
 
-    private void initializeButtons() {
+    public void showToast(View view) {
         final String[] APPS = {
                 "Popular Movies",
                 "Stock Hawk",
@@ -25,74 +24,30 @@ public class MainActivity extends AppCompatActivity {
                 "Capstone"
         };
 
-        Button buttonPopularMovies = (Button) findViewById(R.id.buttonPopularMovies);
-        assert buttonPopularMovies != null;
-        buttonPopularMovies.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "This button will launch my " + APPS[0] + " app!";
-                int duration = Toast.LENGTH_SHORT;
+        int index = 0;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
+        switch (view.getId()) {
+            case R.id.buttonPopularMovies:
+                index = 0;
+                break;
+            case R.id.buttonStockHawk:
+                index = 1;
+                break;
+            case R.id.buttonBuildItBigger:
+                index = 2;
+                break;
+            case R.id.buttonGoUbiquitous:
+                index = 3;
+                break;
+            case R.id.buttonCapstone:
+                index = 4;
+        }
 
-        Button buttonStockHawk = (Button) findViewById(R.id.buttonStockHawk);
-        assert buttonStockHawk != null;
-        buttonStockHawk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "This button will launch my " + APPS[1] + " app!";
-                int duration = Toast.LENGTH_SHORT;
+        Context context = getApplicationContext();
+        CharSequence text = "This button will launch my " + APPS[index] + " app!";
+        int duration = Toast.LENGTH_SHORT;
 
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
-
-        Button buttonBuildItBigger = (Button) findViewById(R.id.buttonBuildItBigger);
-        assert buttonBuildItBigger != null;
-        buttonBuildItBigger.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "This button will launch my " + APPS[2] + " app!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
-
-        Button buttonGoUbiquitous = (Button) findViewById(R.id.buttonGoUbiquitous);
-        assert buttonGoUbiquitous != null;
-        buttonGoUbiquitous.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "This button will launch my " + APPS[3] + " app!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
-
-        Button buttonCapstone = (Button) findViewById(R.id.buttonCapstone);
-        assert buttonCapstone != null;
-        buttonCapstone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Context context = getApplicationContext();
-                CharSequence text = "This button will launch my " + APPS[4] + " app!";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
-            }
-        });
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }
